@@ -1,6 +1,6 @@
 
 
-function distanceFromHqInBlocks(location){ 
+/*function distanceFromHqInBlocks(location){ 
     if (location < 42){
     return 42 - location
     }
@@ -37,4 +37,46 @@ function calculatesFarePrice(start, destination) {
          return 'cannot travel that far'
      }
 
+}*/
+
+
+// Code along with Ricardo Guerra
+// Using Math.abs to find the absolute value because 42 - location = a negative number
+
+
+function distanceFromHqInBlocks(pLocation){
+
+    return Math.abs(42 - pLocation)
+}
+    
+
+function  distanceFromHqInFeet(Location){
+    return 264* distanceFromHqInBlocks(Location)
+    
+
+}
+
+function distanceTravelledInFeet(start, stop){
+    return Math.abs(start - stop) * 264
+   
+}
+
+
+function calculatesFarePrice(start, stop){
+let distanceInFeet = distanceTravelledInFeet(start, stop);
+let fare;
+
+if (distanceInFeet < 400){
+    fare = 0;
+}
+else if (distanceInFeet >= 400 && distanceInFeet <= 2000){
+    fare = (distanceInFeet - 400) * 0.02;
+}
+else if(distanceInFeet > 2000 && distanceInFeet < 2500){
+    fare = 25;
+}
+else if(distanceInFeet > 2500){
+    fare = "cannot travel that far"
+}
+return fare;
 }
